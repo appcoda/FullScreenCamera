@@ -12,6 +12,7 @@
 		AF7DD4D81ED3AA28005C880E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF7DD4D61ED3AA28005C880E /* Main.storyboard */; };
 		AF7DD4DA1ED3AA28005C880E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF7DD4D91ED3AA28005C880E /* Assets.xcassets */; };
 		AF7DD4DD1ED3AA28005C880E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF7DD4DB1ED3AA28005C880E /* LaunchScreen.storyboard */; };
+		AF7DD4E61ED3B266005C880E /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7DD4E51ED3B266005C880E /* CameraController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		AF7DD4D91ED3AA28005C880E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "AV Foundation/Assets.xcassets"; sourceTree = "<group>"; };
 		AF7DD4DC1ED3AA28005C880E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF7DD4DE1ED3AA28005C880E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF7DD4E51ED3B266005C880E /* CameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +42,7 @@
 			children = (
 				AF7DD4D61ED3AA28005C880E /* Main.storyboard */,
 				AF7DD4D41ED3AA28005C880E /* ViewController.swift */,
+				AF7DD4E51ED3B266005C880E /* CameraController.swift */,
 				AF7DD4D91ED3AA28005C880E /* Assets.xcassets */,
 				AF7DD4D11ED3AA28005C880E /* AV Foundation */,
 				AF7DD4D01ED3AA28005C880E /* Products */,
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF7DD4E61ED3B266005C880E /* CameraController.swift in Sources */,
 				AF7DD4D51ED3AA28005C880E /* ViewController.swift in Sources */,
 				AF7DD4D31ED3AA28005C880E /* AppDelegate.swift in Sources */,
 			);

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -32,6 +32,9 @@
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" image="Flash Off Icon"/>
+                                        <connections>
+                                            <action selector="toggleFlash:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yIN-VX-dCj"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dNR-Vo-zfA">
                                         <rect key="frame" x="315" y="60" width="44" height="44"/>
@@ -41,6 +44,9 @@
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" image="Rear Camera Icon"/>
+                                        <connections>
+                                            <action selector="switchCameras:" destination="BYZ-38-t0r" eventType="touchUpInside" id="s10-Jq-2sE"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pfX-fU-RS1">
                                         <rect key="frame" x="16" y="563" width="44" height="44"/>
@@ -61,7 +67,7 @@
                                         <state key="normal" image="Video Camera Icon"/>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="pfX-fU-RS1" firstAttribute="leading" secondItem="Lnd-7g-U5f" secondAttribute="leading" constant="16" id="2q6-T4-3Fb"/>
                                     <constraint firstItem="4wa-M1-7a8" firstAttribute="top" secondItem="pfX-fU-RS1" secondAttribute="bottom" id="DK2-oB-NSM"/>
@@ -81,6 +87,9 @@
                                     <constraint firstAttribute="height" constant="55" id="XnR-IN-00r"/>
                                     <constraint firstAttribute="width" constant="55" id="vO7-4P-FPO"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="captureImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wgc-uc-AzG"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -98,8 +107,8 @@
                         <outlet property="captureButton" destination="Akr-g7-ggC" id="ZHd-4Q-aGF"/>
                         <outlet property="capturePreviewView" destination="Lnd-7g-U5f" id="1h1-9E-VM0"/>
                         <outlet property="photoModeButton" destination="pfX-fU-RS1" id="wuL-Lw-Q6f"/>
-                        <outlet property="toggleCameraButton" destination="TK7-Oc-3y1" id="6Nc-Ou-xxB"/>
-                        <outlet property="toggleFlashButton" destination="dNR-Vo-zfA" id="qj5-r3-8ju"/>
+                        <outlet property="toggleCameraButton" destination="dNR-Vo-zfA" id="Tc7-9N-4bs"/>
+                        <outlet property="toggleFlashButton" destination="TK7-Oc-3y1" id="pfk-k4-hgk"/>
                         <outlet property="videoModeButton" destination="4wa-M1-7a8" id="mdr-rd-U2f"/>
                     </connections>
                 </viewController>
