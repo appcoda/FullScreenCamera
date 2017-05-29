@@ -6,11 +6,10 @@
 //  Copyright © 2017 Pranjal Satija. All rights reserved.
 //
 
-import Photos
 import UIKit
+import Photos
 
 class ViewController: UIViewController {
-    let cameraController = CameraController()
     
     @IBOutlet fileprivate var captureButton: UIButton!
     
@@ -25,11 +24,15 @@ class ViewController: UIViewController {
     ///Allows the user to put the camera in video mode.
     @IBOutlet fileprivate var videoModeButton: UIButton!
     
+    let cameraController = CameraController()
+    
     override var prefersStatusBarHidden: Bool { return true }
+    
 }
 
 extension ViewController {
     override func viewDidLoad() {
+        
         func configureCameraController() {
             cameraController.prepare {(error) in
                 if let error = error {
@@ -49,26 +52,17 @@ extension ViewController {
         
         styleCaptureButton()
         configureCameraController()
+        
     }
 }
 
 extension ViewController {
-    @IBAction func captureImage(_ sender: UIButton) {
-        cameraController.captureImage {(image, error) in
-            guard let image = image else { print(error as Any); return }
-
-            try? PHPhotoLibrary.shared().performChangesAndWait {
-                PHAssetChangeRequest.creationRequestForAsset(from: image)
-            }
-        }
-    }
-    
     @IBAction func toggleFlash(_ sender: UIButton) {
         if cameraController.flashMode == .on {
             cameraController.flashMode = .off
             toggleFlashButton.setImage(#imageLiteral(resourceName: "Flash Off Icon"), for: .normal)
         }
-        
+            
         else {
             cameraController.flashMode = .on
             toggleFlashButton.setImage(#imageLiteral(resourceName: "Flash On Icon"), for: .normal)
@@ -79,7 +73,7 @@ extension ViewController {
         do {
             try cameraController.switchCameras()
         }
-        
+            
         catch {
             print(error)
         }
@@ -95,4 +89,19 @@ extension ViewController {
             return
         }
     }
+    
+    @IBAction func captureImage(_ sender: UIButton) {
+        cameraController.captureImage {(image, error) in
+            guard let image = image else {
+                print(error ?? "Image capture error")
+                return
+            }
+            
+            try? PHPhotoLibrary.shared().performChangesAndWait {
+                PHAssetChangeRequest.creationRequestForAsset(from: image)
+            }
+        }
+    }
+    
 }
+

@@ -2,8 +2,8 @@
 //  CameraController.swift
 //  AV Foundation
 //
-//  Created by Pranjal Satija on 5/22/17.
-//  Copyright © 2017 Pranjal Satija. All rights reserved.
+//  Created by Pranjal Satija on 29/5/2017.
+//  Copyright © 2017 AppCoda. All rights reserved.
 //
 
 import AVFoundation
@@ -14,19 +14,18 @@ class CameraController: NSObject {
     
     var currentCameraPosition: CameraPosition?
     
-    var flashMode = AVCaptureFlashMode.off
-    
     var frontCamera: AVCaptureDevice?
     var frontCameraInput: AVCaptureDeviceInput?
     
-    var photoCaptureCompletionBlock: ((UIImage?, Error?) -> Void)?
-    
     var photoOutput: AVCapturePhotoOutput?
-    
-    var previewLayer: AVCaptureVideoPreviewLayer?
     
     var rearCamera: AVCaptureDevice?
     var rearCameraInput: AVCaptureDeviceInput?
+    
+    var previewLayer: AVCaptureVideoPreviewLayer?
+    
+    var flashMode = AVCaptureFlashMode.off
+    var photoCaptureCompletionBlock: ((UIImage?, Error?) -> Void)?
 }
 
 extension CameraController {
@@ -42,6 +41,7 @@ extension CameraController {
             for camera in cameras {
                 if camera.position == .front {
                     self.frontCamera = camera
+                    
                 }
                 
                 if camera.position == .back {
@@ -94,7 +94,7 @@ extension CameraController {
                 try configureDeviceInputs()
                 try configurePhotoOutput()
             }
-            
+                
             catch {
                 DispatchQueue.main.async {
                     completionHandler(error)
@@ -107,18 +107,6 @@ extension CameraController {
                 completionHandler(nil)
             }
         }
-    }
-}
-
-extension CameraController {
-    func captureImage(completion: @escaping (UIImage?, Error?) -> Void) {
-        guard let captureSession = captureSession, captureSession.isRunning else { completion(nil, CameraControllerError.captureSessionIsMissing); return }
-        
-        let settings = AVCapturePhotoSettings()
-        settings.flashMode = self.flashMode
-        
-        self.photoOutput?.capturePhoto(with: settings, delegate: self)
-        self.photoCaptureCompletionBlock = completion
     }
     
     func displayPreview(on view: UIView) throws {
@@ -176,13 +164,24 @@ extension CameraController {
         switch currentCameraPosition {
         case .front:
             try switchToRearCamera()
-        
+            
         case .rear:
             try switchToFrontCamera()
         }
         
         captureSession.commitConfiguration()
     }
+    
+    func captureImage(completion: @escaping (UIImage?, Error?) -> Void) {
+        guard let captureSession = captureSession, captureSession.isRunning else { completion(nil, CameraControllerError.captureSessionIsMissing); return }
+        
+        let settings = AVCapturePhotoSettings()
+        settings.flashMode = self.flashMode
+        
+        self.photoOutput?.capturePhoto(with: settings, delegate: self)
+        self.photoCaptureCompletionBlock = completion
+    }
+
 }
 
 extension CameraController: AVCapturePhotoCaptureDelegate {
